@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Index from '../pages/Index'
 import Show from '../pages/Show'
+import Edit from '../pages/Edit'
 
 export default function Main(){
     const [creatures, setCreatures] = useState([]) 
@@ -25,7 +26,7 @@ export default function Main(){
         getCreature()
     }
 
-    const updateCreature = async (creature, id)=>{
+    const updateCreatures = async (creature, id)=>{
         await fetch(URL + id, {
             method: 'put',
             headers: {'Content-Type': 'Application/json'},
@@ -39,8 +40,9 @@ export default function Main(){
     return (
         <main>
             <Routes>
-                <Route path='/' element={<Index creatures={creatures} createCreatures={createCreatures}/>}/>
+                <Route exact path='/' element={<Index creatures={creatures} createCreatures={createCreatures}/>}/>
                 <Route path='/creatures/:id' element={<Show creatures={creatures}/>}/>
+                <Route path='/creatures/:id/edit' element={<Edit creatures={creatures} updateCreatures={updateCreatures} />}/>
             </Routes>
         </main>
     )

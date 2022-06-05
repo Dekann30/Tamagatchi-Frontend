@@ -1,17 +1,19 @@
-import { useParams, useNavigate } from "react-router-dom";
-import { useState } from 'react'
+import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 
-export default function SHow(props){
+export default function Show({creatures}){
     const {id} = useParams()
-    const creatures = props.creatures
-    const creature = creatures.find((c) => c._id === id)
-    let navigate = useNavigate()
-
-
-
+    // const creatures = props.creatures
+    const creature = creatures.find(creature => creature._id === id)
+    console.log(id)
+    console.log(creatures)
+    console.log(creature)
 
     return(
-        <div className="creature">
+        <div key={creature.id} className="creature">
+            <Link to={`/creatures/${creature.id}/edit`}>
+                <button>Edit</button>
+            </Link>
             <h1>{creature.name}</h1>
             <img src={creature.icon} alt={creature.name}/>
             <h2>Food: {creature.isFed.toString()}</h2>
