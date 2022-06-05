@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 
 export default function Index(props){
@@ -28,7 +29,9 @@ export default function Index(props){
 
         return props.creatures.map((creature)=>(
             <div key={creature._id}>
-                <h1>{creature.name}</h1>
+                <Link to={`/creatures/${creature._id}`}>
+                    <h1>{creature.name}</h1>
+                </Link>
             </div>
         ))
     }
