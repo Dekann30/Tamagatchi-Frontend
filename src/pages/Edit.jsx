@@ -8,8 +8,6 @@ export default function Edit(props){
     const creature = creatures.find((c) => c._id === id)
     let navigate = useNavigate()
 
-    console.log(creature)
-
     const [editForm, setEditForm] = useState(creature)
 
     const handleChange = (event) =>{
@@ -22,7 +20,7 @@ export default function Edit(props){
     const handleSubmit = (event) => {
         event.preventDefault()
         props.updateCreatures(editForm, id)
-        navigate(`/creatures/${creature.id}`)
+        navigate(`/creatures/${creature._id}`)
     }
 
 

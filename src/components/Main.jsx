@@ -7,9 +7,9 @@ import Edit from '../pages/Edit'
 export default function Main(){
     const [creatures, setCreatures] = useState([]) 
 
-    const URL = 'https://dk-tamagatchi-backend.herokuapp.com/creatures'
+    const URL = 'https://dk-tamagatchi-backend.herokuapp.com/creatures/'
 
-    const getCreature = async () => {
+    const getCreatures = async () => {
         const response = await fetch(URL)
         const data = await response.json()
         setCreatures(data)
@@ -23,7 +23,7 @@ export default function Main(){
             },
             body: JSON.stringify(creature)
         })
-        getCreature()
+        getCreatures()
     }
 
     const updateCreatures = async (creature, id)=>{
@@ -32,16 +32,23 @@ export default function Main(){
             headers: {'Content-Type': 'Application/json'},
             body: JSON.stringify(creature)
         })
-        getCreature()
+        getCreatures()
+    }
+
+    const deleteCreatures = async(creature, id)=>{
+        await fetch(URL + id, {
+            method: 'delete'
+        })
+        getCreatures()
     }
    
-    useEffect(() => {getCreature()}, [])
+    useEffect(() => {getCreatures()}, [])
 
     return (
         <main>
             <Routes>
                 <Route exact path='/' element={<Index creatures={creatures} createCreatures={createCreatures}/>}/>
-                <Route path='/creatures/:id' element={<Show creatures={creatures}/>}/>
+                <Route path='/creatures/:id' element={<Show creatures={creatures} deleteCreatures={deleteCreatures}/>}/>
                 <Route path='/creatures/:id/edit' element={<Edit creatures={creatures} updateCreatures={updateCreatures} />}/>
             </Routes>
         </main>
