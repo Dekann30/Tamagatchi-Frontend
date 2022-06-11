@@ -35,7 +35,7 @@ export default function Main(){
         getCreatures()
     }
 
-    const deleteCreatures = async(creature, id)=>{
+    const deleteCreatures = async(id)=>{
         await fetch(URL + id, {
             method: 'delete'
         })
