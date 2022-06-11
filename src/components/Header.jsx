@@ -4,7 +4,7 @@ export default function Header(){
     return(
         <nav>
             <Link to='/'>
-                <h1>Home</h1>
+                <i class="fa-solid fa-house-chimney-window fa-2xl"></i>
             </Link>
         </nav>
     )

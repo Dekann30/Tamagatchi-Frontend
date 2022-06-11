@@ -1,4 +1,6 @@
-
+*{
+    background-color: beige;
+}
 
 img{
     width:50%;
@@ -10,4 +12,16 @@ img{
 
 .no{
     background-color: red;
+}
+
+nav{
+    position: absolute;
+    bottom: 0%;
+    height: 6%;
+    border: 2px solid lightblue;
+    margin: auto 45%;
+}
+
+.buttons{
+    margin-top: 40%;
 }

@@ -42,6 +42,9 @@ export default function Index(props){
 
     return (
         <section>
+            <h1>Creature Care</h1>
+            <img src="https://img.freepik.com/free-vector/collection-farm-animals-cartoon_29190-5072.jpg?w=1060" alt="farm animals"></img>
+            {props.creatures ? loaded() : loading()}
             <form onSubmit={handleSubmit}>
                 <input 
                     type='text'
@@ -59,7 +62,6 @@ export default function Index(props){
                 />
                 <input type='submit' value='Create Creature'/>
             </form>
-            {props.creatures ? loaded() : loading()}
         </section>
         
     )

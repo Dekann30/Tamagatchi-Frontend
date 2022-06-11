@@ -32,12 +32,6 @@ export default function Show(props){
 
     return(
         <div key={creature.id} className="creature">
-            <div className="buttons">
-                <Link to={`/creatures/${creature._id}/edit`}>
-                    <button>Edit</button>
-                </Link>
-                <button id="delete" onClick={deleteCreature}>Delete</button>
-            </div>
             <h1>{creature.name}</h1>
             <img src={creature.icon} alt={creature.name}/>
             <div className="care">
@@ -45,6 +39,12 @@ export default function Show(props){
                 <button className={`${creature.isFed? 'yes' : 'no'}`} onClick={handleClick}>Food</button>
                 <button className={`${creature.isWatered? 'yes' : 'no'}`} type='button'>Water</button>
                 <button className={`${creature.isPetted? 'yes' : 'no'}`}>Love</button>
+            </div>
+            <div className="buttons">
+                <Link to={`/creatures/${creature._id}/edit`}>
+                    <button>Edit</button>
+                </Link>
+                <button id="delete" onClick={deleteCreature}>Delete</button>
             </div>
         </div>
     )
